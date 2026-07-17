@@ -1,17 +1,26 @@
+import "../styles/Hero.css";
+
 function Hero() {
   return (
-    <section>
-      <h1>
-        Detect Food Freshness Using AI
-      </h1>
+    <section className="hero">
+
+      <h1>Detect Food Freshness Using AI</h1>
 
       <p>
-        Upload an image of your food and let AI analyze whether it is fresh or rotten.
+        Know whether your food is fresh or spoiled
+        in just a few seconds using AI.
       </p>
 
-      <button>
-        Check Freshness
-      </button>
+      <div className="hero-buttons">
+        <button className="upload-btn">
+          Upload Image
+        </button>
+
+        <button className="demo-btn">
+          Try Demo
+        </button>
+      </div>
+
     </section>
   );
 }

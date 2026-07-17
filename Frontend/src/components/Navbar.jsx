@@ -1,12 +1,13 @@
+import "../styles/Navbar.css";
+
 function Navbar() {
   return (
-    <nav>
-      <h2>FreshCheck AI</h2>
+    <nav className="navbar">
+      <h2 className="logo">FreshCheck AI</h2>
 
-      <div>
-        <a href="/">Home</a>
-        <a href="/login">Login</a>
-        <a href="/signup">Signup</a>
+      <div className="nav-buttons">
+        <button className="login-btn">Login</button>
+        <button className="signup-btn">Sign Up</button>
       </div>
     </nav>
   );
