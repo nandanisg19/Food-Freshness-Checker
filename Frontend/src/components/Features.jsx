@@ -1,24 +1,36 @@
+import "../styles/Features.css";
+
 function Features() {
   return (
-    <section>
-      <h2>Why Choose FreshCheck AI?</h2>
+    <section className="features">
 
-      <div>
-        <h3>AI Detection</h3>
-        <p>
-          Machine learning model analyzes food images.
-        </p>
+      <h2>Why FreshCheck AI?</h2>
 
-        <h3>Freshness Classification</h3>
-        <p>
-          Detects whether food is fresh or spoiled.
-        </p>
+      <div className="feature-cards">
 
-        <h3>Smart Suggestions</h3>
-        <p>
-          Provides storage and safety recommendations.
-        </p>
+        <div className="card">
+          <h3>AI Detection</h3>
+          <p>
+            Detect whether your food is fresh or spoiled using AI.
+          </p>
+        </div>
+
+        <div className="card">
+          <h3>Instant Results</h3>
+          <p>
+            Get food freshness predictions within seconds.
+          </p>
+        </div>
+
+        <div className="card">
+          <h3>Smart Suggestions</h3>
+          <p>
+            Receive useful food storage and safety recommendations.
+          </p>
+        </div>
+
       </div>
+
     </section>
   );
 }
