@@ -1,0 +1,27 @@
+.how-it-works {
+    text-align: center;
+    padding: 80px 50px;
+}
+
+.how-it-works h2 {
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.step {
+    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.step p {
+    color: gray;
+}

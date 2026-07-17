@@ -1,11 +1,28 @@
+import "../styles/HowItWorks.css";
+
 function HowItWorks() {
   return (
-    <section>
-      <h2>How It Works</h2>
+    <section className="how-it-works">
+      <h2>How It Works?</h2>
 
-      <p>1. Upload food image</p>
-      <p>2. AI analyzes the image</p>
-      <p>3. Get freshness result</p>
+      <div className="steps">
+
+        <div className="step">
+          <h3>Upload Image</h3>
+          <p>Upload an image of the food item.</p>
+        </div>
+
+        <div className="step">
+          <h3>AI Analysis</h3>
+          <p>Our AI model analyzes the image.</p>
+        </div>
+
+        <div className="step">
+          <h3>Get Results</h3>
+          <p>Know instantly whether the food is fresh or spoiled.</p>
+        </div>
+
+      </div>
     </section>
   );
 }
