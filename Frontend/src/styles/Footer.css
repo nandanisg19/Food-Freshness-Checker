@@ -1,0 +1,33 @@
+.footer {
+    text-align: center;
+    padding: 50px 20px;
+    background: #111;
+    color: white;
+}
+
+.footer h2 {
+    margin-bottom: 15px;
+}
+
+.footer p {
+    color: #ccc;
+}
+
+.footer-links {
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 14px;
+}
