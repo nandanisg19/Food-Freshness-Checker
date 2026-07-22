@@ -1,10 +1,27 @@
 const express = require("express");
 const cors = require("cors");
+const multer = require("multer");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+
+// Multer Configuration
+const storage = multer.diskStorage({
+
+    destination: (req, file, cb) => {
+        cb(null, "uploads/");
+    },
+
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "-" + file.originalname);
+    },
+
+});
+
+const upload = multer({ storage });
 
 
 // Home Route
@@ -14,12 +31,12 @@ app.get("/", (req, res) => {
 
 
 // Prediction Route
-app.post("/predict", (req, res) => {
+app.post("/predict", upload.single("image"), (req, res) => {
 
     res.json({
         status: "Fresh",
         confidence: "96%",
-        message: "Your food looks fresh and safe to consume."
+        message: "Image uploaded successfully!"
     });
 
 });

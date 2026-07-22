@@ -3,6 +3,7 @@ import "../styles/CheckFreshness.css";
 
 function CheckFreshness() {
   const [image, setImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -10,14 +11,15 @@ function CheckFreshness() {
     const file = event.target.files[0];
 
     if (file) {
+      setSelectedFile(file);
       setImage(URL.createObjectURL(file));
       setResult(null);
     }
   };
 
   const checkFreshness = async () => {
-    if (!image) {
-      alert("Please upload a food image first");
+    if (!selectedFile) {
+      alert("Please upload a food image first.");
       return;
     }
 
@@ -25,11 +27,13 @@ function CheckFreshness() {
     setResult(null);
 
     try {
+      const formData = new FormData();
+
+      formData.append("image", selectedFile);
+
       const response = await fetch("http://localhost:5000/predict", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        body: formData,
       });
 
       const data = await response.json();
