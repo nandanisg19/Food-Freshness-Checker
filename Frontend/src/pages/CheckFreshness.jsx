@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../styles/CheckFreshness.css";
 
 function CheckFreshness() {
-
   const [image, setImage] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -16,9 +15,7 @@ function CheckFreshness() {
     }
   };
 
-
-  const checkFreshness = () => {
-
+  const checkFreshness = async () => {
     if (!image) {
       alert("Please upload a food image first");
       return;
@@ -27,39 +24,44 @@ function CheckFreshness() {
     setLoading(true);
     setResult(null);
 
-    setTimeout(() => {
-
-      setLoading(false);
-
-      setResult({
-        status: "Fresh",
-        confidence: "95%",
-        message: "Your food looks fresh and safe to consume."
+    try {
+      const response = await fetch("http://localhost:5000/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
-    }, 2000);
+      const data = await response.json();
 
+      setResult(data);
+    } catch (error) {
+      console.log("Error:", error);
+
+      setResult({
+        status: "Error",
+        confidence: "--",
+        message: "Failed to connect to the backend.",
+      });
+    }
+
+    setLoading(false);
   };
-
 
   return (
     <div className="check-page">
-
       <h1>Check Food Freshness</h1>
 
       <p>
         Upload an image of your food and let AI analyze its freshness.
       </p>
 
-
       <div className="upload-box">
-
         <input
           type="file"
           accept="image/*"
           onChange={handleImageChange}
         />
-
 
         {image && (
           <img
@@ -69,11 +71,9 @@ function CheckFreshness() {
           />
         )}
 
-
         <button onClick={checkFreshness}>
           Check Freshness
         </button>
-
 
         {loading && (
           <h3 className="loading">
@@ -81,13 +81,9 @@ function CheckFreshness() {
           </h3>
         )}
 
-
         {result && (
           <div className="result-box">
-
-            <h2>
-              {result.status} Food 🍎
-            </h2>
+            <h2>{result.status} Food 🍎</h2>
 
             <p>
               Confidence: {result.confidence}
@@ -96,12 +92,9 @@ function CheckFreshness() {
             <p>
               {result.message}
             </p>
-
           </div>
         )}
-
       </div>
-
     </div>
   );
 }
