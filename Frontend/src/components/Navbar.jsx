@@ -1,4 +1,5 @@
 import "../styles/Navbar.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -6,8 +7,23 @@ function Navbar() {
       <h2 className="logo">FreshCheck AI</h2>
 
       <div className="nav-buttons">
-        <button className="login-btn">Login</button>
-        <button className="signup-btn">Sign Up</button>
+
+        <Link to="/check-freshness">
+          <button className="check-btn">
+            Check Freshness
+          </button>
+        </Link>
+
+        <Link to="/login">
+          <button className="login-btn">
+            Login
+          </button>
+        </Link>
+
+        <button className="signup-btn">
+          Sign Up
+        </button>
+
       </div>
     </nav>
   );
